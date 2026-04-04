@@ -1,11 +1,11 @@
 /*
-Параметры блока: <Sn1.DI> ... <Sn6.DI> - входы платы
-Параметры вылета: <exitForce6.Name> (рекомендуемое 7.0) переменная - форсирование при вылете
+Параметры блока: <S1.DI> ... <S6.DI> - входы платы
+Параметры вылета: <exitForce.Name> (рекомендуемое 7.0) переменная - форсирование при вылете
 Вход: <invertSens>
 Выходы: currentError, sensorMask -> rawSensor
 */
 
-const int sensorPins[] = {<Sn1.DI>, <Sn2.DI>, <Sn3.DI>, <Sn4.DI>, <Sn5.DI>, <Sn6.DI>};
+const int sensorPins[] = {<S1.DI>, <S2.DI>, <S3.DI>, <S4.DI>, <S5.DI>, <S6.DI>};
 // Веса распределены симметрично: -5, -3, -1, 1, 3, 5
 const float weights[] = {-5.0, -3.0, -1.0, 1.0, 3.0, 5.0}; 
 
@@ -43,7 +43,7 @@ float calculateError() {
       return error;
     } else {
       // Логика вылета: если последняя ошибка была сильно левее/правее центра
-      float eForceM = constrain((<exitForce6.Name>), 6.0, 15.0);
+      float eForceM = constrain((<exitForce.Name>), 6.0, 15.0);
       if (lastError < -1.0) return -eForceM; 
       if (lastError > 1.0) return eForceM;
       return 0;

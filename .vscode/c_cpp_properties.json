@@ -8,8 +8,7 @@
             "defines": [
                 "_DEBUG",
                 "UNICODE",
-                "_UNICODE",
-                "S1_DI"
+                "_UNICODE"
             ]
         }
     ],
